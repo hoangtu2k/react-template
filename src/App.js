@@ -1,15 +1,18 @@
 
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import  Dashboard  from './pages/Dashboard';
+
 
 function App() {
   return (
-    <div className="container">
-      <h1 className="text-primary">Chào mừng đến với React và Bootstrap 4.6.0!</h1>
-      <Button variant="success">Nhấn vào đây</Button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={'/'} exact={true} element={<Dashboard />}/>
+        <Route path={'/dashboard'} exact={true} element={<Dashboard />}/>
+      </Routes>
+    </BrowserRouter>  
   );
 }
 
