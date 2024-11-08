@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import Button from "@mui/material/Button";
@@ -18,12 +18,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Logout from "@mui/icons-material/Logout";
 import { Divider } from "@mui/material";
+import { MyContext } from "../../App";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isOpenNotificationsDrop, setisOpenNotificationsDrop] = useState(false);
   const openMyAcc = Boolean(anchorEl);
   const openNotifications = Boolean(isOpenNotificationsDrop);
+
+  const context = useContext(MyContext);
 
   const handleOpenMyAccDrop = (event) => {
     setAnchorEl(event.currentTarget);
@@ -55,8 +58,10 @@ const Header = () => {
             </div>
 
             <div className="col-sm-3 d-flex align-items-center part2 pl-4">
-              <Button className="rounded-circle mr-3">
-                <MdMenuOpen />
+              <Button className="rounded-circle mr-3" onClick={()=>context.setIsToggleSidebar(!context.isToggleSidebar)}>
+                    {
+                      context.isToggleSidebar===false ? <MdMenuOpen /> : <MdOutlineMenu />
+                    }
               </Button>
               <SearchBox />
             </div>
@@ -121,126 +126,6 @@ const Header = () => {
 
                       </div>
                     </MenuItem>
-                    <MenuItem onClick={handleCloseNotificationsDrop}>
-                      
-                      <div className="d-flex">
-                        <div>
-                          <div className="userImg">
-                            <span className="rounded-circle">
-                              <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" />
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="dropdownInfo">
-                          <h4>
-                            <span>
-                              <b>Mahmudul</b>
-                              added to his favorite list
-                              <b>Leather belt steve madden</b>
-                            </span>
-                          </h4>
-                          <p className="text-sky mb-0">few seconds ago</p>
-                        </div>
-
-                      </div>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotificationsDrop}>
-                      
-                      <div className="d-flex">
-                        <div>
-                          <div className="userImg">
-                            <span className="rounded-circle">
-                              <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" />
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="dropdownInfo">
-                          <h4>
-                            <span>
-                              <b>Mahmudul</b>
-                              added to his favorite list
-                              <b>Leather belt steve madden</b>
-                            </span>
-                          </h4>
-                          <p className="text-sky mb-0">few seconds ago</p>
-                        </div>
-
-                      </div>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotificationsDrop}>
-                      
-                      <div className="d-flex">
-                        <div>
-                          <div className="userImg">
-                            <span className="rounded-circle">
-                              <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" />
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="dropdownInfo">
-                          <h4>
-                            <span>
-                              <b>Mahmudul</b>
-                              added to his favorite list
-                              <b>Leather belt steve madden</b>
-                            </span>
-                          </h4>
-                          <p className="text-sky mb-0">few seconds ago</p>
-                        </div>
-
-                      </div>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotificationsDrop}>
-                      
-                      <div className="d-flex">
-                        <div>
-                          <div className="userImg">
-                            <span className="rounded-circle">
-                              <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" />
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="dropdownInfo">
-                          <h4>
-                            <span>
-                              <b>Mahmudul</b>
-                              added to his favorite list
-                              <b>Leather belt steve madden</b>
-                            </span>
-                          </h4>
-                          <p className="text-sky mb-0">few seconds ago</p>
-                        </div>
-
-                      </div>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNotificationsDrop}>
-                      
-                      <div className="d-flex">
-                        <div>
-                          <div className="userImg">
-                            <span className="rounded-circle">
-                              <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" />
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="dropdownInfo">
-                          <h4>
-                            <span>
-                              <b>Mahmudul</b>
-                              added to his favorite list
-                              <b>Leather belt steve madden</b>
-                            </span>
-                          </h4>
-                          <p className="text-sky mb-0">few seconds ago</p>
-                        </div>
-
-                      </div>
-                    </MenuItem>
                   </div>
 
                 <div className="pl-3 pr-3 w-100 pt-2 pb-1">
@@ -248,7 +133,6 @@ const Header = () => {
                 </div>
 
                 </Menu>
-
               </div>
 
               <div className="myAccWrapper">

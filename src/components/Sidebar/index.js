@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "@mui/material/Button";
 
 import { FaAngleRight, FaBell, FaCartArrowDown } from "react-icons/fa6";
@@ -7,12 +7,14 @@ import { FaProductHunt } from "react-icons/fa";
 import { MdDashboard, MdMessage } from "react-icons/md";
 import { IoIosSettings } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
-
+import { MyContext } from '../../App';
 
 const Sidebar = () => {
 
     const [activeTab, setActiveTab] = useState(null);
     const [isToggleSubmenu, setIsToggleSubmenu] = useState(false);
+
+    const context = useContext(MyContext);
 
     const isOpenSubmenu=(index)=> {
         setActiveTab(index);

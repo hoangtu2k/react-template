@@ -2,20 +2,20 @@
 
 * { margin: 0px; padding: 0px;}
 
-body{font-family: "Open Sans", sans-serif !important; background: #ebe9e9;}
+body{font-family: "Open Sans", sans-serif !important; background: #ebe9e9; overflow-x: hidden;}
 
 ::-webkit-scrollbar{width: 5px !important; height: 5px !important;}
 ::-webkit-scrollbar-thumb{background: #0858f7 !important;}
 ::-webkit-scrollbar-track{background: transparent !important;}
 
-.btn-blue{background: #0858f7 !important; font-size: 14px !important; font-weight: 500;color: #fff !important;text-transform: capitalize !important;border-radius: 5px !important;}
+.btn-blue{background: #0858f7 !important; font-size: 14px !important; font-weight: 600;color: #fff !important;text-transform: capitalize !important;border-radius: 5px !important;}
 
-header{width: 100%;height: 70px;background-color: #fff; position: fixed;top: 0px;left: 0px;z-index: 1000;}
-header .logo{width: 45px;}
-header .row{margin: 0px !important; }
+header{width: 100%; height: 70px; background-color: rgba(255, 255, 255, 0.9); position: fixed; top: 0px; left: 0px; z-index: 1000; --webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+
 header .logo{text-decoration: none;}
 header .logo img{width: 45px;}
 header .logo span{color: #292929; font-weight: 800; font-size: 24px;}
+
 header button.rounded-circle{min-width: 40px !important; width: 40px !important; height: 40px !important;background:  #f0f5ff !important; color: #0858f7;}
 header button.rounded-circle svg{color: #292929; font-size: 18px !important;}
 header button.rounded-circle:hover svg{color: #0858f7 !important; transition: all 0.2s ease-in-out;}
@@ -36,7 +36,7 @@ header button.rounded-circle:hover svg{color: #0858f7 !important; transition: al
 #account-menu li{font-size: 14px !important;padding: 12px 15px;}
 #account-menu li svg{font-size: 20px !important;}
 
-#notifications .MuiPaper-elevation{right: 240px !important; width: 300px !important; left: auto !important;}
+#notifications .MuiPaper-elevation{right: 240px !important; width: 300px !important; left: auto !important; top: 75px !important;}
 
 .dropdown_list .head{padding: 10px 0px;}
 .dropdown_list .head h4{font-size: 16px; font-weight: 600;}
@@ -53,8 +53,11 @@ header button.rounded-circle:hover svg{color: #0858f7 !important; transition: al
 .dropdown_list .scroll{max-height: 300px; overflow-y: scroll; overflow-x: hidden;}
 
 /* sidebar */
-.main .sidebarWrapper{width: 20%; flex:  0 0 20%;transition: all 0.3s ease-in-out;}
-.main .sidebarWrapper .sidebar{width: 20%; height: 100vh; max-height: calc(100% - 70px); position: fixed; top:70px; left: 0px;background: #fff; overflow-y: scroll;overflow-x: hidden;padding-bottom: 40px;}
+.main .sidebarWrapper{width: 20%; flex:  0 0 20%;transition: all 0.3s ;}
+.main .sidebarWrapper.toggle{width: 0%; flex: 0 0 0%;}
+.main .sidebarWrapper.toggle .sidebar{left: -100%;}
+
+.main .sidebarWrapper .sidebar{width: 20%; height: 100vh; max-height: calc(100% - 70px); position: fixed; top:70px; left: 0px;background: #fff; overflow-y: scroll;overflow-x: hidden;padding-bottom: 40px; transition: all 0.3s ;}
 .main .sidebarWrapper .sidebar::-webkit-scrollbar{width: 3px !important;}
 .main .sidebarWrapper .sidebar::-webkit-scrollbar-thumb{background: transparent !important;}
 .main .sidebarWrapper:hover .sidebar::-webkit-scrollbar{background: #0858f7 !important;}
@@ -92,9 +95,10 @@ header button.rounded-circle:hover svg{color: #0858f7 !important; transition: al
 
 
 /* dashboard */
-.main .content{width: 80%; flex: 0 0 80%;}
+.main .content{width: 80%; flex: 0 0 80%; transition: all 0.3s ;}
+.main .content.toggle{width: 100%; flex: 0 0 100%;}
 
-.right-content{padding: 90px 30px;}
+.right-content{padding: 90px 30px; padding-bottom: 10px;}
 
 .dashboardBoxWrapper{gap: 20px;width: 100%;flex-wrap: wrap;}
 .dashboardBoxWrapper .dashboardBox{width: 48%; height: 170px;border-radius: 10px;overflow: hidden; padding: 20px; display: flex; flex-direction: column; justify-content: space-around; text-align: left !important; position: relative; color: #fff; text-transform: capitalize !important;}
@@ -107,7 +111,7 @@ header button.rounded-circle:hover svg{color: #0858f7 !important; transition: al
 
 .dashboardBoxWrapper .dashboardBox .toggleIcon {font-size:  22px; color: rgba(0, 0, 0, 0.5);cursor: pointer; min-width: 40px !important; width: 40px !important; height: 40px !important; border-radius: 50% !important;}
 
-.dashboardBoxWrapper .dashboardBox .chart{opacity: 0.1; position: absolute; bottom: 20px; left: 20px;}
+.dashboardBoxWrapper .dashboardBox .chart{opacity: 0.050; position: absolute; bottom: 20px; left: 20px;}
 .dashboardBoxWrapper .dashboardBox .chart svg {font-size: 110px; color: #000;}
 .dashboardBoxWrapper .dashboardBox .bottomEle{position: relative; top: 15px;}
 
@@ -129,19 +133,39 @@ header button.rounded-circle:hover svg{color: #0858f7 !important; transition: al
 .card .hd{font-size: 18px; font-weight: bold; color: #403e57}
 .cardFilters .col-md-3 h4{font-size: 14px; font-weight: 800; text-transform: capitalize; color: #403e57;}
 
+h1,h2,h3,h4,h5,h6,p {color: #403e57;}
 
+.table-responsive::-webkit-scrollbar-thumb{background: #ccc !important;}
 
+.table .thead-dark th{background: #1866ee !important; border-color: rgba(255, 255, 255, 0.1) !important; font-size: 13px !important;}
+.table tbody td{font-size: 14px !important; color: #2f2d3e; font-weight: 500;}
 
+.table tbody .actions button{min-width: 32px !important; width: 32px !important; height: 32px !important; margin: 0px 3px !important;}
+.table tbody .actions button svg{font-size: 32px !important;}
 
+.table tbody .actions button.secondary{background: rgba(203, 60, 231, 0.2) !important;}
+.table tbody .actions button.success{background: rgba(26, 159, 83, 0.2) !important;}
+.table tbody .actions button.error{background: rgba(241, 17, 51, 0.2) !important;}
 
+table.v-align td {vertical-align: middle !important;}
 
+.table td .old,
+.table td .new {display: block; width: 100%;}
 
+table td .imgWrapper{width: 20%; flex: 0 0 20%;}
+table td .info{width: 65%; flex: 0 0 65%;}
 
+table td .info h6 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px;font-weight: 600; margin-bottom: 0px; }
+table td .info p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; line-height: 18px; color: #5e5d72; margin-bottom: 0px;}
 
+table.v-align td .productBox{width: 270px;}
 
+.tableFooter { padding-bottom: 20px; }
+.tableFooter .pagination { margin-left: auto; }
 
+.tableFooter p {font-size: 13px; font-weight: 500; margin-bottom: 0px;}
 
-
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{background-color: #0858f7;}
 
 
 
