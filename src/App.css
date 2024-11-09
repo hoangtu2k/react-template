@@ -8,10 +8,14 @@ body{font-family: "Open Sans", sans-serif !important; background: #ebe9e9; overf
 ::-webkit-scrollbar-thumb{background: #0858f7 !important;}
 ::-webkit-scrollbar-track{background: transparent !important;}
 
+h1,h2,h3,h4,h5,h6,p {color: #403e57;}
+
 .btn-blue{background: #0858f7 !important; font-size: 14px !important; font-weight: 600;color: #fff !important;text-transform: capitalize !important;border-radius: 5px !important; border-radius: 10px !important;}
 
 .btn-lg{padding: 5px 25px !important;}
 .btn-big{padding: 10px 25px !important;font-size: 16px !important;}
+
+.btn-big svg{font-size: 25px !important; margin-left: 7px;}
 
 .btn-round{ border-radius: 30px !important;}
 
@@ -185,7 +189,7 @@ table.v-align td .productBox{width: 270px;}
 
 .loginSection {width: 100%; height: 100vh; padding: 35px 25px; position: relative;}
 
-.loginPatern{width: 100%; height: 100%; opacity: 0.3; position: fixed; top: 0px; left: 0px;  z-index: 99; pointer-events: none;}
+.loginPatern{width: 100%; height: 100%; opacity: 0.1; position: fixed; top: 0px; left: 0px;  z-index: 99; pointer-events: none;}
 
 .loginSection .loginBox {width: 350px; height: auto; margin: auto;}
 .loginSection .loginBox .wrapper { width: 100%; height: auto; background: #f0f0f0; position: relative; z-index: 100; padding: 35px; }
@@ -210,4 +214,18 @@ table.v-align td .productBox{width: 270px;}
 .loginSection .loginBox .wrapper .or span.txt{display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; width: 40px; height: 40px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 50%;}
 
 .loginWithGoogle{text-transform: capitalize !important; font-weight: bold !important;}
+
+.signUpSection{background: #f1f1f1 !important; padding: 0px 0px; height: auto !important;}
+.signUpSection .loginBox{background: #e4e4e4 !important; position: relative; z-index: 100; width: 100% !important; padding: 25px 5px !important;}
+.signUpSection .loginBox .wrapper {border: 0px !important; background: transparent !important; padding-top: 10px !important;}
+
+.signUpSection .part1{padding-left: 100px; padding-right: 100px;}
+.signUpSection .part1 h1{font-size: 50px; font-weight: 800;}
+.signUpSection .part1 p{font-size: 18px; font-weight: 500;}
+
+
+
+
+
+
 

@@ -5,7 +5,7 @@ import { MdDelete, MdShoppingBag } from "react-icons/md";
 import { GiStarsStack } from "react-icons/gi";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoIosTimer } from "react-icons/io";
 import Button from "@mui/material/Button";
 import { HiDotsVertical } from "react-icons/hi";
@@ -17,6 +17,8 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import Pagination from "@mui/material/Pagination";
+import context from "react-bootstrap/esm/AccordionContext";
+import { MyContext } from "../../App";
 
 export const data = [
   ["Year", "Sales", "Expenses"],
@@ -33,6 +35,13 @@ export const options = {
 
 const Dashboard = () => {
   const ITEM_HEIGHT = 48;
+
+  const context = useContext(MyContext);
+
+  useEffect(()=>{
+      context.setisHideSidebarAndHeader(false);
+      window.scrollTo(0,0);
+  },[]);
 
   const [showBy, setshowBy] = useState("");
   const [showBysetCatBy, setCatBy] = useState("");

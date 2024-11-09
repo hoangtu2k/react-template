@@ -4,9 +4,9 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Login from "./pages/Login";
-
+import SignUp from "./pages/SignUp";
 
 const MyContext = createContext();
 
@@ -17,7 +17,6 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
 
   const [isHideSidebarAndHeader, setisHideSidebarAndHeader] = useState(false);
-
 
   const values = {
     isToggleSidebar,
@@ -53,6 +52,7 @@ function App() {
                  <Route path={"/"} exact={true} element={<Dashboard />} />
                  <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
                  <Route path={"/login"} exact={true} element={<Login />} />
+                 <Route path={"/signUp"} exact={true} element={<SignUp />} />
             </Routes>
           </div>
       </div>
