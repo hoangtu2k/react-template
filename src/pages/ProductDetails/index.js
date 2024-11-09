@@ -1,8 +1,12 @@
+import React from 'react';
+
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Breadcrumb  from "@mui/material/Breadcrumbs";
 import { emphasize, styled } from "@mui/material/styles";
 import Chip from '@mui/material/Chip';
 import HomeIcon from '@mui/icons-material/Home';
+
+import Slider from 'react-slick';
 
 
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
@@ -25,6 +29,15 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
 } );
 
 const ProductDetails = () => {
+
+    var productSliderOptions = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
     return(
         <>
                 <div className="right-content w-100">
@@ -59,12 +72,18 @@ const ProductDetails = () => {
 
                                 <div className="col-md-4">
 
+                                    <Slider {...productSliderOptions}>
+                                        <div className='item'>
+                                            <img src="https://acc957.com/Img/TaiKhoan.png" className='w-100' alt=''/>
+                                        </div>
+                                    </Slider>
+
                                 </div>
 
                                 <div className="col-md-8">
 
                                 </div>
-                                
+
                             </div>
                     </div>
 

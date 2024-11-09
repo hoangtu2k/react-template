@@ -210,6 +210,8 @@ body.dark .css-1ll44ll-MuiOutlinedInput-notchedOutline {border-color: rgba(255, 
 .table-responsive::-webkit-scrollbar-thumb{background: #ccc !important;}
 body.dark .table-responsive::-webkit-scrollbar-thumb{background: rgba(255, 255, 255, 0.2) !important;}
 
+.slick-slide{outline: none !important;}
+
 .table .thead-dark th{background: #1866ee !important; border-color: rgba(255, 255, 255, 0.1) !important; font-size: 13px !important;}
 .table tbody td{font-size: 14px !important; color: #2f2d3e; font-weight: 500;}
 
