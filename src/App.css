@@ -3,6 +3,7 @@
 * { margin: 0px; padding: 0px;}
 
 body{font-family: "Open Sans", sans-serif !important; background: #ebe9e9; overflow-x: hidden;}
+body.dark{background: #071739 !important;}
 
 ::-webkit-scrollbar{width: 5px !important; height: 5px !important;}
 ::-webkit-scrollbar-thumb{background: #0858f7 !important;}
@@ -29,13 +30,20 @@ h1,h2,h3,h4,h5,h6,p {color: #403e57;}
 
 header{width: 100%; height: 70px; background-color: rgba(255, 255, 255, 0.9); position: fixed; top: 0px; left: 0px; z-index: 1000; --webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
 
+body.dark header{background: #112143 !important; }
+
 header .logo{text-decoration: none;}
 header .logo img{width: 45px;}
 header .logo span{color: #292929; font-weight: 800; font-size: 24px;}
 
+body.dark header .logo span{color: #fff !important; opacity: 0.9;}
+
 header button.rounded-circle{min-width: 40px !important; width: 40px !important; height: 40px !important;background:  #f0f5ff !important; color: #0858f7;}
 header button.rounded-circle svg{color: #292929; font-size: 18px !important;}
 header button.rounded-circle:hover svg{color: #0858f7 !important; transition: all 0.2s ease-in-out;}
+
+body.dark header button.rounded-circle{background: #12254e !important;}
+body.dark header button.rounded-circle svg{color: #fff !important;}
 
 header .part2{padding-left: 50px;}
 
@@ -43,6 +51,9 @@ header .part2{padding-left: 50px;}
 .searchBox input{background: transparent;border: 0px; outline: none;padding-left: 5px;font-size: 15px;color: #292929;}
 .searchBox input::-webkit-input-placeholder{color: rgba(0,0,0,0.6);}
 .searchBox svg{font-size: 18px;color: #292929;}
+
+body.dark .searchBox{background: #12254e;}
+body.dark .searchBox input,body.dark .searchBox input::-webkit-input-placeholder,body.dark .searchBox svg{color:rgba(255, 255, 255, 0.7)}
 
 .myAcc{text-align: left !important; color: #0858f7 !important; text-transform: capitalize !important;}
 .userImg{display: flex;align-items: center;justify-content: center;overflow: hidden;width: 40px;height: 40px;border: 1px solid #0858f7;padding: 2px;border-radius: 100%;}
@@ -52,15 +63,22 @@ header .part2{padding-left: 50px;}
 .myAcc .userInfo h4{font-size: 15px; font-weight: 600;margin-bottom: 0px;color: #292929;}
 .myAcc .userInfo p{margin-top: 0px;font-size: 12px;color: #000;opacity: 0.7;}
 
+body.dark .myAcc .userInfo *{color: rgba(255, 255, 255, 0.8) !important;}
+body.dark .MuiPaper-elevation{background-color: #12254e !important;}
+body.dark .MuiPaper-elevation li *,body.dark .MuiPaper-elevation li{color: rgba(255, 255, 255, 0.8) !important;}
+
 #account-menu li{font-size: 14px !important;padding: 12px 15px;}
 #account-menu li svg{font-size: 20px !important;}
 
-#notifications .MuiPaper-elevation{right: 240px !important; width: 300px !important; left: auto !important; top: 75px !important;}
+#notifications .MuiPaper-elevation{right: 240px !important; width: 300px !important; left: auto !important; top: 70px !important;}
 
 .dropdown_list .head{padding: 10px 0px;}
 .dropdown_list .head h4{font-size: 16px; font-weight: 600;}
 .dropdown_list li.MuiButtonBase-root{background: #ebf6ff !important;color: #000 !important; padding: 10px 15px !important;}
 .dropdown_list li.MuiButtonBase-root:hover{background: #e2e8ed !important;}
+body.dark .dropdown_list li.MuiButtonBase-root{background-color: #12254e !important; background: #12254e !important;}
+body.dark .dropdown_list .head h4{color: rgba(255, 255, 255, 0.8);}
+
 
 .dropdownInfo {padding-left: 15px;}
 .dropdownInfo h4 {font-size: 13px;font-weight: 500; white-space: break-spaces; line-height: 21px;margin-top: 0px;margin-bottom: 0px;}
@@ -72,6 +90,9 @@ header .part2{padding-left: 50px;}
 .dropdown_list .scroll{max-height: 300px; overflow-y: scroll; overflow-x: hidden;}
 
 /* sidebar */
+
+
+
 .main .sidebarWrapper{width: 20%; flex:  0 0 20%;transition: all 0.3s ;}
 .main .sidebarWrapper.toggle{width: 0%; flex: 0 0 0%;}
 .main .sidebarWrapper.toggle .sidebar{left: -100%;}
@@ -79,7 +100,9 @@ header .part2{padding-left: 50px;}
 .main .sidebarWrapper .sidebar{width: 20%; height: 100vh; max-height: calc(100% - 70px); position: fixed; top:70px; left: 0px;background: #fff; overflow-y: scroll;overflow-x: hidden;padding-bottom: 40px; transition: all 0.3s ;}
 .main .sidebarWrapper .sidebar::-webkit-scrollbar{width: 3px !important;}
 .main .sidebarWrapper .sidebar::-webkit-scrollbar-thumb{background: transparent !important;}
+
 .main .sidebarWrapper:hover .sidebar::-webkit-scrollbar{background: #0858f7 !important;}
+
 .main .sidebarWrapper .sidebar ul{margin-bottom: 0px; padding: 10px 15px;}
 .main .sidebarWrapper .sidebar ul li{list-style: none;}
 .main .sidebarWrapper .sidebar ul li button{color: #5e5d72 !important; text-align: left;justify-content: left;border-radius: 10px !important;padding: 12px 10px !important;align-items: center;text-transform: capitalize !important; font-weight: 600 !important;font-family: "Open Sans", sans-serif !important;font-size: 15px !important;}
@@ -91,15 +114,28 @@ header .part2{padding-left: 50px;}
 .main .sidebarWrapper .sidebar ul li button.active{background: #f1f1f1 !important;}
 .main .sidebarWrapper .sidebar ul li button.active .icon svg{color: #0858f7 !important;}
 .main .sidebarWrapper .sidebar ul li button.active .arrow{transform: rotate(90deg);}
+
 .main .sidebarWrapper .sidebar ul .submenu{padding: 0px 45px;position: relative;transition: all 0.3s;height: 0px;}
 .main .sidebarWrapper .sidebar ul .submenu::before{content: ''; width: 1px; height: 95%; position: absolute;  top: 0px; left: 25px; background: rgba(0,0,0,0.2);}
+
 .main .sidebarWrapper .sidebar ul .submenu li{width: 100%; list-style: none;}
 .main .sidebarWrapper .sidebar ul .submenu li a{color: #5e5d72 !important; text-decoration: none; display: block; padding: 6px 0px;font-size: 14px; font-weight: 500;transition: all 0.3s;}
 .main .sidebarWrapper .sidebar ul .submenu li a:hover{color: #0858f7 !important;}
+
+body.dark .main .sidebarWrapper .sidebar ul .submenu li a{color: rgba(255, 255, 255, 0.7) !important;}
+body.dark .main .sidebarWrapper .sidebar ul .submenu li a:hover{color: #0858f7 !important;}
+
 .main .sidebarWrapper .sidebar ul .submenuWrapper{transition: all 0.3s;height: 0px;overflow: hidden;}
 .main .sidebarWrapper .sidebar ul .submenuWrapper.colapsed .submenu{opacity: 0;}
 .main .sidebarWrapper .sidebar ul .submenuWrapper.colapse{height: auto; overflow: inherit;opacity: 1;padding: 10px 0px;}
 .main .sidebarWrapper .sidebar ul .submenuWrapper.colapse .submenu{opacity: 1;height: auto;}
+
+body.dark .main .sidebarWrapper .sidebar {background: #12254e !important;}
+body.dark .main .sidebarWrapper .sidebar ul li button{color: rgba(255, 255, 255, 0.8) !important;}
+body.dark .main .sidebarWrapper .sidebar ul li button:hover{background: rgba(255, 255, 255, 0.1) !important;}
+body.dark .main .sidebarWrapper .sidebar ul li button.active{background: rgba(255, 255, 255, 0.1) !important;}
+body.dark .main .sidebarWrapper .sidebar ul .submenu::before{background: rgba(255, 255, 255,0.2);}
+
 
 .logoutWrapper {padding: 0px 25px;}
 .logoutWrapper .logoutBox{width: 100%;height: 100px;padding: 25px;background: #bcd2fd;border-radius: 10px;border-bottom: 20px;display: flex;align-items: center;justify-content: center;position: relative;overflow: hidden;}
@@ -112,6 +148,7 @@ header .part2{padding-left: 50px;}
 .logoutWrapper .logoutBox button{font-size: 14px !important; font-weight: 600 !important;}
 .logoutWrapper .logoutBox button svg{margin-right: 5px; font-size: 18px !important;}
 
+body.dark .logoutWrapper .logoutBox{ background: transparent; background-image: linear-gradient(#183e8c, #163474); }
 
 /* dashboard */
 .main .content{width: 80%; flex: 0 0 80%; transition: all 0.3s ;}
@@ -152,9 +189,27 @@ header .part2{padding-left: 50px;}
 .card .hd{font-size: 18px; font-weight: bold; color: #403e57}
 .cardFilters .col-md-3 h4{font-size: 14px; font-weight: 800; text-transform: capitalize; color: #403e57;}
 
+body.dark .card {background: #112143 !important;}
+body.dark .card .hd{font-size: 18px; font-weight: bold; color: rgba(255, 255, 255, 0.8);}
+body.dark .cardFilters .col-md-3 h4{color: rgba(255, 255, 255, 0.8);}
+
 h1,h2,h3,h4,h5,h6,p {color: #403e57;}
 
+body.dark .css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root, 
+body.dark .css-lohd6h-MuiSvgIcon-root-MuiSelect-icon,
+body.dark .css-d551zc-MuiSvgIcon-root-MuiSelect-icon,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p {color: rgba(255, 255, 255, 0.8) !important;}
+
+body.dark .css-1ll44ll-MuiOutlinedInput-notchedOutline {border-color: rgba(255, 255, 255,0.3) !important;}
+
 .table-responsive::-webkit-scrollbar-thumb{background: #ccc !important;}
+body.dark .table-responsive::-webkit-scrollbar-thumb{background: rgba(255, 255, 255, 0.2) !important;}
 
 .table .thead-dark th{background: #1866ee !important; border-color: rgba(255, 255, 255, 0.1) !important; font-size: 13px !important;}
 .table tbody td{font-size: 14px !important; color: #2f2d3e; font-weight: 500;}
@@ -172,6 +227,8 @@ table.v-align td {vertical-align: middle !important;}
 .table td .new {display: block; width: 100%;}
 
 table td .imgWrapper{width: 20%; flex: 0 0 20%;}
+table td .imgWrapper .card{ border-radius: 10px !important; overflow: hidden !important;}
+
 table td .info{width: 65%; flex: 0 0 65%;}
 
 table td .info h6 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px;font-weight: 600; margin-bottom: 0px; }
@@ -184,7 +241,16 @@ table.v-align td .productBox{width: 270px;}
 
 .tableFooter p {font-size: 13px; font-weight: 500; margin-bottom: 0px;}
 
+body.dark table td{color: rgba(255, 255, 255, 0.5) !important;}
+
 .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{background-color: #0858f7;}
+
+
+body.dark .table-bordered td,
+.table-bordered th {border: 1px solid rgba(255, 255, 255, 0.1) !important;}
+
+body.dark .css-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root{color: rgba(255, 255, 255, 0.8) !important;}
+body.dark .css-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root:hover{background: rgba(255, 255, 255, 0.2) !important; color:  #fff !important;}
 
 
 .loginSection {width: 100%; height: 100vh; padding: 35px 25px; position: relative;}

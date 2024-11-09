@@ -203,7 +203,7 @@ const Dashboard = () => {
                   <td>
                     <div className="d-flex align-items-center productBox">
                       <div className="imgWrapper">
-                        <div className="img">
+                        <div className="img card shadow m-0">
                           <img
                             src="https://acc957.com/Img/TaiKhoan.png"
                             className="w-100"
@@ -211,7 +211,7 @@ const Dashboard = () => {
                           />
                         </div>
                       </div>
-                      <div className="info pl-0">
+                      <div className="info pl-3">
                         <h6>Tops and skirt set for Female...</h6>
                         <p>Women's exclusive summ...</p>
                       </div>
