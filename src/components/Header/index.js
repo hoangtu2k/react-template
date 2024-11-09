@@ -26,6 +26,8 @@ const Header = () => {
   const openMyAcc = Boolean(anchorEl);
   const openNotifications = Boolean(isOpenNotificationsDrop);
 
+  
+
   const context = useContext(MyContext);
 
   const handleOpenMyAccDrop = (event) => {
@@ -57,7 +59,7 @@ const Header = () => {
               </Link>
             </div>
 
-            <div className="col-sm-3 d-flex align-items-center part2 pl-4">
+            <div className="col-sm-3 d-flex align-items-center part2">
               <Button className="rounded-circle mr-3" onClick={()=>context.setIsToggleSidebar(!context.isToggleSidebar)}>
                     {
                       context.isToggleSidebar===false ? <MdMenuOpen /> : <MdOutlineMenu />
@@ -135,7 +137,11 @@ const Header = () => {
                 </Menu>
               </div>
 
-              <div className="myAccWrapper">
+              {
+
+                 context.isLogin !== true ? <Link to={'/login'}><Button className="btn-blue btn-lg btn-round">Sign In</Button></Link>
+                 :
+                 <div className="myAccWrapper">
                 <Button
                   className="myAcc d-flex align-items-center"
                   onClick={handleOpenMyAccDrop}
@@ -207,7 +213,10 @@ const Header = () => {
                     Logout
                   </MenuItem>
                 </Menu>
-              </div>
+                </div>
+
+              }
+         
             </div>
           </div>
         </div>
