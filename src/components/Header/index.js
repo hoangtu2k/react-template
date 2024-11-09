@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate  } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import Button from "@mui/material/Button";
 import { MdMenuOpen } from "react-icons/md";
@@ -26,7 +26,20 @@ const Header = () => {
   const openMyAcc = Boolean(anchorEl);
   const openNotifications = Boolean(isOpenNotificationsDrop);
 
+  const [user, setUser] = useState({
+    name: 'Phung Hoang Tu',
+    roleName: '@rinkuv37',
+  });
+
+  const navigate = useNavigate(); // Khai báo hook navigate
+
+  const handleLogout = () => {
+    // Xoá token khỏi Local Storage
+    localStorage.removeItem('token');
   
+    // Điều hướng đến trang đăng nhập hoặc trang chính
+    navigate('/login'); // Sử dụng navigate để điều hướng
+  };
 
   const context = useContext(MyContext);
 
@@ -45,6 +58,8 @@ const Header = () => {
   const handleCloseNotificationsDrop = () => {
     setisOpenNotificationsDrop(false);
   };
+
+  
 
   return (
     <>
@@ -153,8 +168,8 @@ const Header = () => {
                   </div>
 
                   <div className="userInfo">
-                    <h4>Phung Hoang Tu</h4>
-                    <p className="mb-0">@rinkuv37</p>
+                    <h4>{user.name}</h4>
+                    <p className="mb-0">{user.roleName}</p>
                   </div>
                 </Button>
                 <Menu
@@ -206,7 +221,7 @@ const Header = () => {
                     </ListItemIcon>
                     Đặt lại mật khẩu
                   </MenuItem>
-                  <MenuItem onClick={handleCloseMyAccDrop}>
+                  <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
                       <Logout fontSize="small" />
                     </ListItemIcon>

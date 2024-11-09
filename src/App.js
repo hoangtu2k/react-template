@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
@@ -16,11 +16,13 @@ function App() {
 
   const [isToggleSidebar, setIsToggleSidebar] = useState(false);
 
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   const [isHideSidebarAndHeader, setisHideSidebarAndHeader] = useState(false);
 
   const [themeMode, setThemeMode] = useState(true);
+
+  
 
   useEffect(()=>{
 

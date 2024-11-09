@@ -10,6 +10,9 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import axios from '../../axiosConfig'; // Import the configured axios instance
+
 
 const Login = () => {
   const [inputIndex, setInputIndex] = useState(null);
@@ -26,6 +29,52 @@ const Login = () => {
     setInputIndex(index);
   };
 
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let hasError = false;
+
+    if (!email) {
+      setEmailError('Email không được để trống.');
+      hasError = true;
+    } else {
+      setEmailError('');
+    }
+
+    if (!password) {
+      setPasswordError('Mật khẩu không được để trống.');
+      hasError = true;
+    } else {
+      setPasswordError('');
+    }
+
+    if (hasError) return;
+
+    try {
+      const response = await axios.post('/auth/admin/login', {
+        email,
+        password,
+      });
+      
+      localStorage.setItem('token', response.data.token);
+      navigate('/'); // Replace '/dashboard' with your target route
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        setPasswordError('Email hoặc mật khẩu không hợp lệ.');
+      } else {
+        setPasswordError('Đăng nhập không thành công. Vui lòng thử lại.');
+      }
+    }
+  };
+
+
+
   return (
     <>
       <img src={patern} className="loginPatern" alt="" />
@@ -37,7 +86,7 @@ const Login = () => {
           </div>
 
           <div className="wrapper mt-3 card border ">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div
                 className={`form-group position-relative ${
                   inputIndex === 0 && "focus"
@@ -48,12 +97,14 @@ const Login = () => {
                 </span>
                 <input
                   type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="form-control"
                   placeholder="enter your email"
                   onFocus={() => focusInput(0)}
                   onBlur={() => setInputIndex(null)}
-                  aut
                 />
+                 {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
               </div>
               <div
                 className={`form-group position-relative ${
@@ -66,6 +117,8 @@ const Login = () => {
                 <input
                   type={`${isShowPassword === true ? "text" : "password"}`}
                   className="form-control"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="enter your password"
                   onFocus={() => focusInput(1)}
                   onBlur={() => setInputIndex(null)}
@@ -76,10 +129,11 @@ const Login = () => {
                 >
                   {isShowPassword === true ? <IoMdEyeOff /> : <IoMdEye />}
                 </span>
+                {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
               </div>
 
               <div className="form-group">
-                <Button className="btn-blue btn-lg w-100 btn-big">
+                <Button className="btn-blue btn-lg w-100 btn-big" type="submit">
                   Sign In
                 </Button>
               </div>

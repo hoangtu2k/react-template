@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import Button from "@mui/material/Button";
 
@@ -20,6 +20,16 @@ const Sidebar = () => {
         setActiveTab(index);
         setIsToggleSubmenu(!isToggleSubmenu);
     }
+
+  const navigate = useNavigate(); // Khai báo hook navigate
+
+  const handleLogout = () => {
+    // Xoá token khỏi Local Storage
+    localStorage.removeItem('token');
+  
+    // Điều hướng đến trang đăng nhập hoặc trang chính
+    navigate('/login'); // Sử dụng navigate để điều hướng
+  };
 
 
     return (
@@ -95,7 +105,7 @@ const Sidebar = () => {
 
                 <div className="logoutWrapper">
                     <div className="logoutBox">
-                        <Button variant="contained"><IoMdLogOut/> Đăng xuất</Button>
+                        <Button variant="contained" onClick={handleLogout}><IoMdLogOut/> Đăng xuất</Button>
                     </div>
                 </div>
 
