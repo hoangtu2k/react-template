@@ -139,7 +139,7 @@ const Header = () => {
 
               {
 
-                 context.isLogin !== true ? <Link to={'/login'}><Button className="btn-blue btn-lg btn-round">Sign In</Button></Link>
+                 context.isLogin !== true ? <Link to={'/login'}><Button className="btn-blue btn-lg btn-round">Đăng nhập</Button></Link>
                  :
                  <div className="myAccWrapper">
                 <Button
@@ -198,19 +198,19 @@ const Header = () => {
                     <ListItemIcon>
                       <PersonAdd fontSize="small" />
                     </ListItemIcon>
-                    My account
+                    Tài khoản của tôi
                   </MenuItem>
                   <MenuItem onClick={handleCloseMyAccDrop}>
                     <ListItemIcon>
                       <IoShieldHalfSharp fontSize="small" />
                     </ListItemIcon>
-                    Reset Password
+                    Đặt lại mật khẩu
                   </MenuItem>
                   <MenuItem onClick={handleCloseMyAccDrop}>
                     <ListItemIcon>
                       <Logout fontSize="small" />
                     </ListItemIcon>
-                    Logout
+                    Đăng xuất
                   </MenuItem>
                 </Menu>
                 </div>

@@ -45,9 +45,9 @@ const Sidebar = () => {
                             
                             <div className={`submenuWrapper ${activeTab === 1 && isToggleSubmenu ===true ? 'colapse': 'colapsed'} `}>
                                 <ul className="submenu">
-                                    <li><Link to="/products">Product List</Link></li>
-                                    <li><Link to="/">Product View</Link></li>
-                                    <li><Link to="/">Product Upload</Link></li>
+                                    <li><Link to="/products">Danh sách sản phẩm</Link></li>
+                                    <li><Link to="/product/details">Chi tiết sản phẩm</Link></li>
+                                    <li><Link to="/product/upload">Tải lên sản phẩm</Link></li>
                                 </ul>
                             </div>
                                   
@@ -95,7 +95,7 @@ const Sidebar = () => {
 
                 <div className="logoutWrapper">
                     <div className="logoutBox">
-                        <Button variant="contained"><IoMdLogOut/> Logout</Button>
+                        <Button variant="contained"><IoMdLogOut/> Đăng xuất</Button>
                     </div>
                 </div>
 

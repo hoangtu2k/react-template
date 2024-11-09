@@ -12,7 +12,7 @@ import { Button, FormControlLabel } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import  CheckBox  from "@mui/material/Checkbox";
+import CheckBox from "@mui/material/Checkbox";
 
 const SignUp = () => {
   const [inputIndex, setInputIndex] = useState(null);
@@ -20,13 +20,11 @@ const SignUp = () => {
   const [isShowPassword, setisShowPassword] = useState(false);
   const [isShowConfirmPassword, setisShowConfirmPassword] = useState(false);
 
-  
-
   const context = useContext(MyContext);
 
   useEffect(() => {
     context.setisHideSidebarAndHeader(true);
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }, []);
 
   const focusInput = (index) => {
@@ -38,21 +36,27 @@ const SignUp = () => {
       <img src={patern} className="loginPatern" alt="" />
       <section className="loginSection signUpSection">
         <div className="row">
-
           <div className="col-md-8 d-flex align-items-center flex-column part1 justify-content-center">
-                <h1>BEST UX/UI FASHION <span className="text-sky">ECOMMERCE DASHBOARD</span> & ADMIN PANEL</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and 
-                typesetting industry. Lorem Ipsum has been the industry's 
-                standard dummy text ever since the 1500s, when an unknown 
-                printer took a galley of type and scrambled it to make a 
-                type specimen book. It has survived not only five centuries</p>
+            <h1>
+              BEST UX/UI FASHION{" "}
+              <span className="text-sky">ECOMMERCE DASHBOARD</span> & ADMIN
+              PANEL
+            </h1>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries
+            </p>
 
-                    <div className="w-100 mt-4">
-                    <Link to={'/'}>
-                            <Button className="btn-blue btn-lg btn-big"><IoMdHome/> Go To Home</Button>
-                    </Link>
-                    </div>
-
+            <div className="w-100 mt-4">
+              <Link to={"/"}>
+                <Button className="btn-blue btn-lg btn-big">
+                  <IoMdHome /> Go To Home
+                </Button>
+              </Link>
+            </div>
           </div>
 
           <div className="col-md-4 pr-0">
@@ -64,7 +68,6 @@ const SignUp = () => {
 
               <div className="wrapper mt-3 card border ">
                 <form>
-
                   <div
                     className={`form-group position-relative ${
                       inputIndex === 0 && "focus"
@@ -132,7 +135,9 @@ const SignUp = () => {
                       <IoShieldCheckmarkSharp />
                     </span>
                     <input
-                      type={`${isShowConfirmPassword === true ? "text" : "password"}`}
+                      type={`${
+                        isShowConfirmPassword === true ? "text" : "password"
+                      }`}
                       className="form-control"
                       placeholder="confirm your password"
                       onFocus={() => focusInput(3)}
@@ -140,13 +145,23 @@ const SignUp = () => {
                     />
                     <span
                       className="toggleShowPassword"
-                      onClick={() => setisShowConfirmPassword(!isShowConfirmPassword)}
+                      onClick={() =>
+                        setisShowConfirmPassword(!isShowConfirmPassword)
+                      }
                     >
-                      {isShowConfirmPassword === true ? <IoMdEyeOff /> : <IoMdEye />}
+                      {isShowConfirmPassword === true ? (
+                        <IoMdEyeOff />
+                      ) : (
+                        <IoMdEye />
+                      )}
                     </span>
                   </div>
 
-                  <FormControlLabel required control={<CheckBox />} label= "I agree to the all Terms & Condiotions" />
+                  <FormControlLabel
+                    required
+                    control={<CheckBox />}
+                    label="I agree to the all Terms & Condiotions"
+                  />
 
                   <div className="form-group">
                     <Button className="btn-blue btn-lg w-100 btn-big">
@@ -154,7 +169,7 @@ const SignUp = () => {
                     </Button>
                   </div>
 
-                  <div className="form-group text-center mb-0">                  
+                  <div className="form-group text-center mb-0">
                     <div className="d-flex align-items-center justify-content-center or mt-3 mb-3">
                       <span className="line"></span>
                       <span className="txt">or</span>
@@ -163,7 +178,6 @@ const SignUp = () => {
 
                     <Button
                       variant="outlined"
-                      color="error"
                       className="w-100 btn-lg btn-big loginWithGoogle"
                     >
                       <img src={googleIcon} width="25px" alt="" /> &nbsp; Sign
@@ -178,9 +192,7 @@ const SignUp = () => {
                     Sign In
                   </Link>
                 </span>
-
               </div>
-
             </div>
           </div>
         </div>

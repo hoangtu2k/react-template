@@ -138,7 +138,7 @@ const Dashboard = () => {
         </div>
 
         <div className="card shadow border-0 p-3 mt-4">
-          <h3 className="hd">Best Selling Products</h3>
+          <h3 className="hd">Sản phẩm bán chạy nhất</h3>
 
           <div className="row cardFilters mt-3">
             <div className="col-md-3">
@@ -161,7 +161,7 @@ const Dashboard = () => {
               </FormControl>
             </div>
             <div className="col-md-3">
-              <h4>CATEGORY BY</h4>
+              <h4>Hiển thị theo danh mục</h4>
               <FormControl size="small" className="w-100">
                 <Select
                   value={showBysetCatBy}

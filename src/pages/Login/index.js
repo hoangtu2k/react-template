@@ -52,7 +52,7 @@ const Login = () => {
                   placeholder="enter your email"
                   onFocus={() => focusInput(0)}
                   onBlur={() => setInputIndex(null)}
-                  autoFocus
+                  aut
                 />
               </div>
               <div
@@ -96,7 +96,6 @@ const Login = () => {
 
                 <Button
                   variant="outlined"
-                  color="error"
                   className="w-100 btn-lg btn-big loginWithGoogle"
                 >
                   <img src={googleIcon} width="25px" alt="" /> &nbsp; Sign In
