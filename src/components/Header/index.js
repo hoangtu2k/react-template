@@ -1,17 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate, useNavigate  } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import Button from "@mui/material/Button";
 import { MdMenuOpen } from "react-icons/md";
 import { MdOutlineMenu } from "react-icons/md";
 import SearchBox from "../SearchBox";
 import { CiLight } from "react-icons/ci";
-import { MdDarkMode } from "react-icons/md";
-import { IoShieldHalfSharp } from "react-icons/io5";
-import { IoCartOutline } from "react-icons/io5";
-import { MdOutlineMailOutline } from "react-icons/md";
+import { IoMenu, IoShieldHalfSharp } from "react-icons/io5";
 import { FaRegBell } from "react-icons/fa6";
-
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -20,16 +16,15 @@ import Logout from "@mui/icons-material/Logout";
 import { Divider } from "@mui/material";
 import { MyContext } from "../../App";
 
+
+
 const Header = () => {
+
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [isOpenNotificationsDrop, setisOpenNotificationsDrop] = useState(false);
   const openMyAcc = Boolean(anchorEl);
   const openNotifications = Boolean(isOpenNotificationsDrop);
-
-  const [user, setUser] = useState({
-    name: 'Phung Hoang Tu',
-    roleName: '@rinkuv37',
-  });
 
   const navigate = useNavigate(); // Khai báo hook navigate
 
@@ -69,12 +64,15 @@ const Header = () => {
             {/*Logo wraooer */}
             <div className="col-sm-2 part1">
               <Link to={"/"} className="d-flex align-items-center logo">
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <span className="ml-2">HOTASH</span>
               </Link>
             </div>
 
-            <div className="col-sm-3 d-flex align-items-center part2">
+            {
+              context.windowWidth>992 &&
+
+              <div className="col-sm-3 d-flex align-items-center part2 res-hide">
               <Button className="rounded-circle mr-3" onClick={()=>context.setIsToggleSidebar(!context.isToggleSidebar)}>
                     {
                       context.isToggleSidebar===false ? <MdMenuOpen /> : <MdOutlineMenu />
@@ -82,18 +80,13 @@ const Header = () => {
               </Button>
               <SearchBox />
             </div>
+            
+            }
+            
 
             <div className="col-sm-7 d-flex align-items-center justify-content-end part3">
               <Button className="rounded-circle mr-3" onClick={()=>context.setThemeMode(!context.themeMode)}>
                 <CiLight />
-              </Button>
-
-              <Button className="rounded-circle mr-3">
-                <IoCartOutline />
-              </Button>
-
-              <Button className="rounded-circle mr-3">
-                <MdOutlineMailOutline />
               </Button>
 
               <div className="dropdownWrapper position-relative">
@@ -103,6 +96,14 @@ const Header = () => {
                 >
                   <FaRegBell />
                 </Button>
+
+                <Button
+                  className="rounded-circle mr-3"
+                  onClick={() => context.openNav() }
+                >
+                  <IoMenu />
+                </Button>
+
                 <Menu
                   anchorEl={isOpenNotificationsDrop}
                   className="notifications dropdown_list"
@@ -125,7 +126,7 @@ const Header = () => {
                         <div>
                           <div className="userImg">
                             <span className="rounded-circle">
-                              <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" />
+                              <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" alt="" />
                             </span>
                           </div>
                         </div>
@@ -163,14 +164,15 @@ const Header = () => {
                 >
                   <div className="userImg">
                     <span className="rounded-circle">
-                      <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" />
+                      <img src="https://techvccloud.mediacdn.vn/280518386289090560/2024/9/17/reactjs-1726545361892465400796-6-0-465-817-crop-17265453645351178455990.jpg" alt="" />
                     </span>
                   </div>
 
-                  <div className="userInfo">
-                    <h4>{user.name}</h4>
-                    <p className="mb-0">{user.roleName}</p>
+                  <div className="userInfo res-hide">
+                    <h4>Phung Hoang Tu</h4>
+                    <p className="mb-0">admin</p>
                   </div>
+
                 </Button>
                 <Menu
                   anchorEl={anchorEl}

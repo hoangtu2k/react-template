@@ -57,7 +57,7 @@ const ProductDetails = () => {
     return(
         <>
                 <div className="right-content w-100">
-                    <div className="card shadow border-0 w-100 flex-row p-4">
+                    <div className="card shadow border-0 w-100 flex-row p-4 res-col">
                         <h5 className="mb-0">Chi tiết sản phẩm</h5>
                         <Breadcrumb aria-label="breadcrumb" className="ml-auto breadcrumbs_">
 
