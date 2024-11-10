@@ -1,17 +1,12 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter , Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./responsive.css";
-import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { createContext, useEffect, useState } from "react";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import Products from "./pages/Products";
-import ProductDetails from "./pages/ProductDetails";
-import ProductUpload from "./pages/ProductUpload";
 
+import { publicRouters } from './routers';
 
 const MyContext = createContext();
 
@@ -109,21 +104,13 @@ function App() {
             }`}
           >
             <Routes>
-              <Route path={"/"} exact={true} element={<Dashboard />} />
-              <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
-              <Route path={"/login"} exact={true} element={<Login />} />
-              <Route path={"/signUp"} exact={true} element={<SignUp />} />
-              <Route path={"/products"} exact={true} element={<Products />} />
-              <Route
-                path={"/product/details"}
-                exact={true}
-                element={<ProductDetails />}
-              />
-              <Route
-                path={"/product/upload"}
-                exact={true}
-                element={<ProductUpload />}
-              />
+
+                  {publicRouters.map( (route, index) => {
+                    const Page = route.component;
+                      return <Route key={index} path={route.path}  element={<Page /> } />
+                  })}
+
+              
             </Routes>
           </div>
         </div>
