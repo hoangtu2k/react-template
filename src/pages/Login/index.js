@@ -11,7 +11,7 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import axios from '../../axiosConfig'; // Import the configured axios instance
+import axios from '../../utils/axiosConfig'; // Import the configured axios instance
 
 
 const Login = () => {

@@ -105,13 +105,13 @@ const ProductDetails = () => {
                                             <img src="https://acc957.com/Img/TaiKhoan.png" className='w-100' alt=''/>
                                         </div>
                                         <div className='item'>
-                                            <img src="https://acc957.com/Img/TaiKhoan.png" className='w-100' alt=''/>
+                                            <img src="https://mironcoder-hotash.netlify.app/images/product/01.webp" className='w-100' alt=''/>
                                         </div>
                                         <div className='item'>
                                             <img src="https://acc957.com/Img/TaiKhoan.png" className='w-100' alt=''/>
                                         </div>
                                         <div className='item'>
-                                            <img src="https://acc957.com/Img/TaiKhoan.png" className='w-100' alt=''/>
+                                            <img src="https://mironcoder-hotash.netlify.app/images/product/01.webp" className='w-100' alt=''/>
                                         </div>
                                         <div className='item'>
                                             <img src="https://acc957.com/Img/TaiKhoan.png" className='w-100' alt=''/>

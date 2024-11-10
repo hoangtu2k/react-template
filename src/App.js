@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
+import ProductUpload from "./pages/ProductUpload";
 
 const MyContext = createContext();
 
@@ -67,9 +68,7 @@ function App() {
               <Sidebar />
           </div>
           }
-
-          
-
+         
           <div className={`content ${isHideSidebarAndHeader===true &&'full'} ${isToggleSidebar ===true ? 'toggle' : ''}`}>
             <Routes>
                  <Route path={"/"} exact={true} element={<Dashboard />} />
@@ -78,6 +77,7 @@ function App() {
                  <Route path={"/signUp"} exact={true} element={<SignUp />} />
                  <Route path={"/products"} exact={true} element={<Products />} />
                  <Route path={"/product/details"} exact={true} element={<ProductDetails />} />
+                 <Route path={"/product/upload"} exact={true} element={<ProductUpload />} />
             </Routes>
           </div>
       </div>
