@@ -98,7 +98,7 @@ const Header = () => {
                 </Button>
 
                 <Button
-                  className="rounded-circle mr-3"
+                  className="rounded-circle mr-3 rounded-circle-nav"
                   onClick={() => context.openNav() }
                 >
                   <IoMenu />
