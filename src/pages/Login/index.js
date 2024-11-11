@@ -11,7 +11,10 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import axios from '../../utils/axiosConfig'; // Import the configured axios instance
+
+import axios from '../../utils/axiosConfig';
+
+import { AuthContext } from "../../context/AuthProvider";
 
 
 const Login = () => {
@@ -20,6 +23,8 @@ const Login = () => {
   const [isShowPassword, setisShowPassword] = useState(false);
 
   const context = useContext(MyContext);
+
+  const { login } = useContext(AuthContext);
 
   useEffect(() => {
     context.setisHideSidebarAndHeader(true);
@@ -57,13 +62,27 @@ const Login = () => {
     if (hasError) return;
 
     try {
+      // Bước 1: Gửi yêu cầu đăng nhập
       const response = await axios.post('/auth/admin/login', {
         email,
         password,
       });
-      
-      localStorage.setItem('token', response.data.token);
-      navigate('/'); // Replace '/dashboard' with your target route
+
+      if (response.status === 200) {
+        const token = response.data.token;
+
+        // Bước 2: Gửi yêu cầu để lấy thông tin người dùng
+        const userResponse = await axios.get('/admin/employees', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        // Lưu thông tin người dùng vào context
+        login(token, userResponse.data); // Pass both token and user data
+        navigate('/'); // Điều hướng đến trang chính
+      }
+
     } catch (err) {
       if (err.response && err.response.status === 401) {
         setPasswordError('Email hoặc mật khẩu không hợp lệ.');
@@ -72,7 +91,6 @@ const Login = () => {
       }
     }
   };
-
 
 
   return (

@@ -11,13 +11,11 @@ import Button from "@mui/material/Button";
 import { HiDotsVertical } from "react-icons/hi";
 import { Chart } from "react-google-charts";
 
-import InputLabel from "@mui/material/InputLabel";
-import FormHelperText from "@mui/material/FormHelperText";
+
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 
 import Pagination from "@mui/material/Pagination";
-import context from "react-bootstrap/esm/AccordionContext";
 import { MyContext } from "../../App";
 
 export const data = [

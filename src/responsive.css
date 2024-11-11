@@ -48,7 +48,9 @@
     .signUpSection .col-md-8{display: none !important;}
   
     #notifications .MuiPaper-elevation{right: 20px !important;}
-  
+    
+    
+
   }
   
   @media only screen and (min-width:320px) and (max-width:575px){
@@ -58,20 +60,15 @@
     .userImg{width: 35px; height: 35px;}
   
     .myAccWrapper button{padding: 0px !important; min-width: 35px !important; width: 35px !important;}
-  
-  
-    
-    
   }
   
   
   
   @media only screen and (min-width:320px) and (max-width:767px){
     .form .col{max-width: 100% !important; flex: 0 0 100% !important;}
+    
   }
   
-  
-
   @media only screen and (min-width: 993px) {
     .rounded-circle-nav {
         display: none !important;

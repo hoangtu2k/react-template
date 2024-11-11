@@ -1,4 +1,4 @@
-import { BrowserRouter , Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./responsive.css";
@@ -6,7 +6,9 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { createContext, useEffect, useState } from "react";
 
-import { publicRouters } from './routers';
+import { publicRouters } from "./routers";
+import RequireAuth from "./auth/RequireAuth";
+import { AuthProvider } from "./context/AuthProvider";
 
 const MyContext = createContext();
 
@@ -22,16 +24,8 @@ function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [isOpenNav, setIsOpenNav] = useState(false);
- 
- 
-  const [user, setUser] = useState({
-    name: "",
-    roleName: "",
-    id: "",
-  });
 
   useEffect(() => {
-
     if (themeMode === true) {
       document.body.classList.remove("dark");
       document.body.classList.add("light");
@@ -43,21 +37,18 @@ function App() {
     }
   }, [themeMode]);
 
-  
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
+    };
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
-
   }, []);
-  
-  const openNav =() => {
+
+  const openNav = () => {
     setIsOpenNav(true);
   };
 
@@ -72,50 +63,65 @@ function App() {
     setThemeMode,
     windowWidth,
     openNav,
-    isOpenNav
+    isOpenNav,
   };
 
   return (
-    <BrowserRouter>
-      <MyContext.Provider value={values}>
-        {isHideSidebarAndHeader !== true && <Header />}
+    <AuthProvider>
+      <BrowserRouter>
+        <MyContext.Provider value={values}>
+          {isHideSidebarAndHeader !== true && <Header />}
 
-        <div className="main d-flex">
-          {isHideSidebarAndHeader !== true && (
-            <>
-            <div className={`sidebarOverlay d-none ${isOpenNav===true &&  'show'}`} onClick={()=>setIsOpenNav(false)}></div>
+          <div className="main d-flex">
+            {isHideSidebarAndHeader !== true && (
+              <>
+                <div
+                  className={`sidebarOverlay d-none ${
+                    isOpenNav === true && "show"
+                  }`}
+                  onClick={() => setIsOpenNav(false)}
+                ></div>
 
-              <div
-                className={`sidebarWrapper ${
-                  isToggleSidebar === true ? "toggle" : ""
-                } ${isOpenNav === true  ? 'open' : '' }`}
-              >
-                <Sidebar />
-              </div>
+                <div
+                  className={`sidebarWrapper ${
+                    isToggleSidebar === true ? "toggle" : ""
+                  } ${isOpenNav === true ? "open" : ""}`}
+                >
+                  <Sidebar />
+                </div>
+              </>
+            )}
 
-
-            </>
-            
-          )}
-
-          <div
-            className={`content ${isHideSidebarAndHeader === true && "full"} ${
-              isToggleSidebar === true ? "toggle" : ""
-            }`}
-          >
-            <Routes>
-
-                  {publicRouters.map( (route, index) => {
-                    const Page = route.component;
-                      return <Route key={index} path={route.path}  element={<Page /> } />
-                  })}
-
-              
-            </Routes>
+            <div
+              className={`content ${
+                isHideSidebarAndHeader === true && "full"
+              } ${isToggleSidebar === true ? "toggle" : ""}`}
+            >
+              <Routes>
+                {publicRouters.map((route, index) => {
+                  const Page = route.component;
+                  return (
+                    <Route
+                      key={index}
+                      path={route.path}
+                      element={
+                        route.private ? (
+                          <RequireAuth>
+                            <Page />
+                          </RequireAuth>
+                        ) : (
+                          <Page />
+                        )
+                      }
+                    />
+                  );
+                })}
+              </Routes>
+            </div>
           </div>
-        </div>
-      </MyContext.Provider>
-    </BrowserRouter>
+        </MyContext.Provider>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

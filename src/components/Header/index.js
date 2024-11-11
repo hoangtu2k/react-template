@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate  } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import Button from "@mui/material/Button";
@@ -16,10 +16,17 @@ import Logout from "@mui/icons-material/Logout";
 import { Divider } from "@mui/material";
 import { MyContext } from "../../App";
 
+import { AuthContext } from '../../context/AuthProvider';
 
 
 const Header = () => {
 
+  const { logout } = useContext(AuthContext);
+
+  const { user } = useContext(AuthContext); // Lấy thông tin người dùng từ contex
+  
+  const userName = user?.name || "Tên không xác định";
+  const roleName = user?.roleName || "Chức vụ không xác định";
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isOpenNotificationsDrop, setisOpenNotificationsDrop] = useState(false);
@@ -27,13 +34,10 @@ const Header = () => {
   const openNotifications = Boolean(isOpenNotificationsDrop);
 
   const navigate = useNavigate(); // Khai báo hook navigate
-
-  const handleLogout = () => {
-    // Xoá token khỏi Local Storage
-    localStorage.removeItem('token');
   
-    // Điều hướng đến trang đăng nhập hoặc trang chính
-    navigate('/login'); // Sử dụng navigate để điều hướng
+  const handleLogout = () => {
+    logout(); // Gọi hàm logout
+    navigate('/login'); // Điều hướng về trang login
   };
 
   const context = useContext(MyContext);
@@ -169,8 +173,10 @@ const Header = () => {
                   </div>
 
                   <div className="userInfo res-hide">
-                    <h4>Phung Hoang Tu</h4>
-                    <p className="mb-0">admin</p>
+                   
+                    <h4>{userName}</h4>
+                    <p className="mb-0">{ roleName }</p>
+                
                   </div>
 
                 </Button>
