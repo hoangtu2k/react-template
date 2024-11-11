@@ -28,16 +28,16 @@ const Login = () => {
 
   useEffect(() => {
     context.setisHideSidebarAndHeader(true);
-  }, []);
+  }, );
 
   const focusInput = (index) => {
     setInputIndex(index);
   };
 
 
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
 
@@ -45,11 +45,11 @@ const Login = () => {
     e.preventDefault();
     let hasError = false;
 
-    if (!email) {
-      setEmailError('Email không được để trống.');
+    if (!username) {
+      setUsernameError('Tên tài khoản không được để trống.');
       hasError = true;
     } else {
-      setEmailError('');
+      setUsernameError('');
     }
 
     if (!password) {
@@ -64,7 +64,7 @@ const Login = () => {
     try {
       // Bước 1: Gửi yêu cầu đăng nhập
       const response = await axios.post('/auth/admin/login', {
-        email,
+        username,
         password,
       });
 
@@ -72,7 +72,7 @@ const Login = () => {
         const token = response.data.token;
 
         // Bước 2: Gửi yêu cầu để lấy thông tin người dùng
-        const userResponse = await axios.get('/admin/employees', {
+        const userResponse = await axios.get('/admin/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -85,7 +85,7 @@ const Login = () => {
 
     } catch (err) {
       if (err.response && err.response.status === 401) {
-        setPasswordError('Email hoặc mật khẩu không hợp lệ.');
+        setPasswordError('Tên tài khoản hoặc mật khẩu không hợp lệ.');
       } else {
         setPasswordError('Đăng nhập không thành công. Vui lòng thử lại.');
       }
@@ -115,14 +115,14 @@ const Login = () => {
                 </span>
                 <input
                   type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="form-control"
                   placeholder="enter your email"
                   onFocus={() => focusInput(0)}
                   onBlur={() => setInputIndex(null)}
                 />
-                 {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+                 {usernameError && <p style={{ color: 'red' }}>{usernameError}</p>}
               </div>
               <div
                 className={`form-group position-relative ${
